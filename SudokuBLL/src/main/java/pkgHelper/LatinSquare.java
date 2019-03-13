@@ -2,51 +2,20 @@ package pkgHelper;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import org.apache.commons.lang.ArrayUtils;
 
 public class LatinSquare {
-
-	/**
-	 * LatinSquare - two dimensional array that's the core of the puzzle
-	 * 
-	 * @version 1.1
-	 * @since Lab #1
-	 */
 	private int[][] LatinSquare;
-
-	/**
-	 * No-arg constructor, make it public, don't do anything in the constructor
-	 * 
-	 * @version 1.1
-	 * @since Lab #1
-	 */
 	private boolean bIgnoreZero;
-	
 	private ArrayList<PuzzleViolation> PV;
 	
 	public LatinSquare() {
-
+		
 	}
-
-	/**
-	 * Pass in a given puzzle, set the LatinSquare
-	 * 
-	 * @param puzzle
-	 *            Pass in given LatinSquare puzzle (probably for testing)
-	 * @version 1.1
-	 * @since Lab #1
-	 */
-
 	public LatinSquare(int[][] puzzle) {
 		this.LatinSquare = puzzle;
 	}
 
-	/**
-	 * ContainsZero - return 'true' if any element in the LatinSquare is a zero
-	 * 
-	 * @version 1.1
-	 * @since Lab #1
-	 * @return - returns 'true' if any element in the LatinSquare is a zero
-	 */
 	protected void ClearPuzzleViolation() {
 		PV.clear();
 	}
@@ -66,19 +35,6 @@ public class LatinSquare {
 		return false;
 
 	}
-
-	/**
-	 * doesElementExist - pass in one-dimension array and a value, if value exists
-	 * in array... then return true
-	 * 
-	 * @version 1.1
-	 * @since Lab #1
-	 * @param arr
-	 *            - one dimensional array to check
-	 * @param iValue
-	 *            - value to check against one dimensional array
-	 * @return - return 'true' if iValue exists in arr
-	 */
 	public boolean doesElementExist(int[] arr, int iValue) {
 		// TODO: Return 'true' if iValue is found in arr
 
@@ -93,24 +49,6 @@ public class LatinSquare {
 
 	}
 
-	/**
-	 * getColumn - return a one-dimension array from a given column in the
-	 * LatinSquare <br>
-	 * 
-	 * 0 1 2 3 <br>
-	 * 1 2 3 4 <br>
-	 * 3 4 1 2 <br>
-	 * 4 1 3 2 <br>
-	 *
-	 *
-	 * In this example, getColumn(1) would return [1],[2],[4],[1]
-	 *
-	 * @version 1.1
-	 * @since Lab #1
-	 * @param iCol
-	 *            The column you want returned from the two-dimensional array
-	 * @return one dimensional array of values for the given column
-	 */
 	public int[] getColumn(int iCol) {
 
 		// TODO: Return a given column from LatinSquare
@@ -122,34 +60,9 @@ public class LatinSquare {
 		}
 		return Col;
 	}
-
-	/**
-	 * return LatinSquare instance attribute
-	 * 
-	 * @version 1.1
-	 * @since Lab #1
-	 * @return - returns the instance of the LatinSquare
-	 */
 	public int[][] getLatinSquare() {
 		return LatinSquare;
 	}
-
-	/**
-	 * getRow - return a one-dimension array from a given row in the LatinSquare<br>
-	 * 
-	 * 0 1 2 3 <br>
-	 * 1 2 3 4 <br>
-	 * 3 4 1 2 <br>
-	 * 4 1 3 2 <br>
-	 * 
-	 * In this example, getRow(1) would return [1],[2],[3],[4]
-	 * 
-	 * @version 1.1
-	 * @since Lab #1
-	 * @param iRow
-	 *            given row of the two dimensional array to return
-	 * @return one dimensional array of the given row
-	 */
 	public int[] getRow(int iRow) {
 		// TODO: Return a given row from LatinSquare
 
@@ -159,18 +72,6 @@ public class LatinSquare {
 
 		return Row;
 	}
-
-	/**
-	 * hasAllValues - return 'true' if every element from arr2 is in arr1
-	 * 
-	 * @version 1.1
-	 * @since Lab #1
-	 * @param arr1
-	 *            target array
-	 * @param arr2
-	 *            source array
-	 * @return return 'true' if every element from source array is in target array
-	 */
 	public boolean hasAllValues(int[] arr1, int[] arr2) {
 		// TODO: Return 'true' if every element from arr2 is in arr1
 
@@ -194,16 +95,6 @@ public class LatinSquare {
 		return hasAllValues;
 
 	}
-
-	/**
-	 * Pass in a one-dimension array, pass back true if there is a duplicate value
-	 * 
-	 * @version 1.1
-	 * @since Lab #1
-	 * @param arr
-	 *            - one dimensional array to check for duplicates
-	 * @return - returns 'true' if any of the elements are duplicate
-	 */
 	public boolean hasDuplicates(int[] arr) {
 
 		// TODO: Return 'true' if any element in arr is duplicate
@@ -224,16 +115,6 @@ public class LatinSquare {
 	public boolean isbIgnoreZero() {
 		return bIgnoreZero;
 	}
-
-	/**
-	 * isLatinSquare - return 'true' if: Each row and column doesn't contain
-	 * duplicates If each element in the first row is found in every other row If
-	 * each element in the first coumn is found in every other column
-	 * 
-	 * @version 1.1
-	 * @since Lab #1
-	 * @return returns 'true' if the two-dimensional array is a LatinSquare
-	 */
 	public boolean isLatinSquare() {
 
 		boolean isLatinSquare = true;
@@ -271,35 +152,14 @@ public class LatinSquare {
 		return isLatinSquare;
 	}
 	
-	private int[] RemoveZeros(int[] arr) {
-		int count = 0;
-		for(int i:arr) {
-			if(i!=0) count++;
-		}
-		int[] zerosRemoved = new int[count];
-		count = 0;
-		for(int i:arr) {
-			if(i!=0) {
-				zerosRemoved[count] = i;
-				count++;
-			}
-		}
-		return zerosRemoved;
+	private void removeZeros(int[] arr) {
+		while(ArrayUtils.contains(arr, 0))
+            arr = ArrayUtils.removeElement(arr, 0);
 		
 	}
-	
 	protected void setbIgnoreZero(boolean bIgnoreZero) {
 		this.bIgnoreZero = bIgnoreZero;
 	}
-
-	/**
-	 * set LatinSquare instance attribute
-	 * 
-	 * @version 1.1
-	 * @since Lab #1
-	 * @param latinSquare
-	 *            - pass in an instance of a possible LatinSquare
-	 */
 	public void setLatinSquare(int[][] latinSquare) {
 		LatinSquare = latinSquare;
 	}

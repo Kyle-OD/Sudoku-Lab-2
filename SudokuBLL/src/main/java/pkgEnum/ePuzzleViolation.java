@@ -1,5 +1,5 @@
 package pkgEnum;
 
 public enum ePuzzleViolation{
-	DupRow, DupCol, RupRegion, InvalidValue, ContainsZero, MissingZero;
+	DupRow, DupCol, DupRegion, InvalidValue, ContainsZero, MissingZero;
 }
