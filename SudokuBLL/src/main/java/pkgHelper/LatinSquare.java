@@ -1,5 +1,6 @@
 package pkgHelper;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class LatinSquare {
@@ -18,6 +19,10 @@ public class LatinSquare {
 	 * @version 1.1
 	 * @since Lab #1
 	 */
+	private boolean bIgnoreZero;
+	
+	private ArrayList<PuzzleViolation> PV;
+	
 	public LatinSquare() {
 
 	}
@@ -42,6 +47,14 @@ public class LatinSquare {
 	 * @since Lab #1
 	 * @return - returns 'true' if any element in the LatinSquare is a zero
 	 */
+	protected void ClearPuzzleViolation() {
+		PV.clear();
+	}
+	
+	protected void AddPuzzleViolation(PuzzleViolation pv) {
+		PV.add(pv);
+	}
+	
 	public boolean ContainsZero() {
 		for (int i = 0; i < LatinSquare.length; i++) {
 			for (int j = 0; j < LatinSquare.length; j++) {
@@ -207,6 +220,10 @@ public class LatinSquare {
 		}
 		return hasDuplicates;
 	}
+	
+	public boolean isbIgnoreZero() {
+		return bIgnoreZero;
+	}
 
 	/**
 	 * isLatinSquare - return 'true' if: Each row and column doesn't contain
@@ -253,6 +270,27 @@ public class LatinSquare {
 
 		return isLatinSquare;
 	}
+	
+	private int[] RemoveZeros(int[] arr) {
+		int count = 0;
+		for(int i:arr) {
+			if(i!=0) count++;
+		}
+		int[] zerosRemoved = new int[count];
+		count = 0;
+		for(int i:arr) {
+			if(i!=0) {
+				zerosRemoved[count] = i;
+				count++;
+			}
+		}
+		return zerosRemoved;
+		
+	}
+	
+	protected void setbIgnoreZero(boolean bIgnoreZero) {
+		this.bIgnoreZero = bIgnoreZero;
+	}
 
 	/**
 	 * set LatinSquare instance attribute
@@ -262,7 +300,6 @@ public class LatinSquare {
 	 * @param latinSquare
 	 *            - pass in an instance of a possible LatinSquare
 	 */
-
 	public void setLatinSquare(int[][] latinSquare) {
 		LatinSquare = latinSquare;
 	}
