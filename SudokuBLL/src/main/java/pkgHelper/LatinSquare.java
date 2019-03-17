@@ -61,7 +61,11 @@ public class LatinSquare {
 		return Col;
 	}
 	public int[][] getLatinSquare() {
+
 		return LatinSquare;
+	}
+	protected ArrayList<PuzzleViolation> getPV(){
+		return PV;
 	}
 	public int[] getRow(int iRow) {
 		// TODO: Return a given row from LatinSquare
@@ -95,6 +99,20 @@ public class LatinSquare {
 		return hasAllValues;
 
 	}
+	public boolean hasDuplicates() {
+		boolean dup = false;
+		for(int i = 0; i< this.LatinSquare.length;i++) {
+			if(hasDuplicates(this.getRow(i))) {
+				dup = true;
+			}
+		}
+		for(int i =0; i<this.LatinSquare.length;i++) {
+			if(hasDuplicates(this.getColumn(i))) {
+				dup = true;
+			}
+		}
+		return dup;
+	}
 	public boolean hasDuplicates(int[] arr) {
 
 		// TODO: Return 'true' if any element in arr is duplicate
@@ -102,6 +120,7 @@ public class LatinSquare {
 		boolean hasDuplicates = false;
 		int[] sortedArray = Arrays.copyOf(arr, arr.length);
 		Arrays.sort(sortedArray);
+		sortedArray = RemoveZeros(sortedArray);
 
 		for (int i = 0; i < sortedArray.length - 1; i++) {
 			if (sortedArray[i] == sortedArray[i + 1]) {
@@ -152,9 +171,13 @@ public class LatinSquare {
 		return isLatinSquare;
 	}
 	
-	private void removeZeros(int[] arr) {
-		while(ArrayUtils.contains(arr, 0))
+	private int[] RemoveZeros(int[] arr) {
+		
+		while(ArrayUtils.contains(arr, 0)) {
             arr = ArrayUtils.removeElement(arr, 0);
+		}
+		return arr;
+		
 		
 	}
 	protected void setbIgnoreZero(boolean bIgnoreZero) {
