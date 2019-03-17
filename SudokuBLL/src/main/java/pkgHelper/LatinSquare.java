@@ -5,8 +5,8 @@ import java.util.Arrays;
 import org.apache.commons.lang.ArrayUtils;
 
 public class LatinSquare {
-	private int[][] LatinSquare;
 	private boolean bIgnoreZero;
+	private int[][] LatinSquare;
 	private ArrayList<PuzzleViolation> PV;
 	
 	public LatinSquare() {
@@ -16,12 +16,12 @@ public class LatinSquare {
 		this.LatinSquare = puzzle;
 	}
 
-	protected void ClearPuzzleViolation() {
-		PV.clear();
-	}
-	
 	protected void AddPuzzleViolation(PuzzleViolation pv) {
 		PV.add(pv);
+	}
+	
+	protected void ClearPuzzleViolation() {
+		PV.clear();
 	}
 	
 	public boolean ContainsZero() {
@@ -35,6 +35,7 @@ public class LatinSquare {
 		return false;
 
 	}
+	
 	public boolean doesElementExist(int[] arr, int iValue) {
 		// TODO: Return 'true' if iValue is found in arr
 
@@ -60,13 +61,16 @@ public class LatinSquare {
 		}
 		return Col;
 	}
+	
 	public int[][] getLatinSquare() {
 
 		return LatinSquare;
 	}
+	
 	protected ArrayList<PuzzleViolation> getPV(){
 		return PV;
 	}
+	
 	public int[] getRow(int iRow) {
 		// TODO: Return a given row from LatinSquare
 
@@ -76,6 +80,7 @@ public class LatinSquare {
 
 		return Row;
 	}
+	
 	public boolean hasAllValues(int[] arr1, int[] arr2) {
 		// TODO: Return 'true' if every element from arr2 is in arr1
 
@@ -99,6 +104,7 @@ public class LatinSquare {
 		return hasAllValues;
 
 	}
+	
 	public boolean hasDuplicates() {
 		boolean dup = false;
 		for(int i = 0; i< this.LatinSquare.length;i++) {
@@ -113,6 +119,7 @@ public class LatinSquare {
 		}
 		return dup;
 	}
+	
 	public boolean hasDuplicates(int[] arr) {
 
 		// TODO: Return 'true' if any element in arr is duplicate
@@ -134,6 +141,7 @@ public class LatinSquare {
 	public boolean isbIgnoreZero() {
 		return bIgnoreZero;
 	}
+	
 	public boolean isLatinSquare() {
 
 		boolean isLatinSquare = true;
@@ -176,13 +184,13 @@ public class LatinSquare {
 		while(ArrayUtils.contains(arr, 0)) {
             arr = ArrayUtils.removeElement(arr, 0);
 		}
-		return arr;
-		
-		
+		return arr;	
 	}
+	
 	protected void setbIgnoreZero(boolean bIgnoreZero) {
 		this.bIgnoreZero = bIgnoreZero;
 	}
+	
 	public void setLatinSquare(int[][] latinSquare) {
 		LatinSquare = latinSquare;
 	}

@@ -20,11 +20,11 @@ public class Sudoku extends LatinSquare {
 		super(latinSquare);
 	}
 	
-	protected int[][] getPuzzle() {
+	public int[][] getPuzzle() {
 		return super.getLatinSquare();
 	}
 	
-	protected int[] getRegion(int iRegionNbr ){
+	public int[] getRegion(int iRegionNbr ){
 		int[] region = new int[iSize];
 		int count = 0;
 		for (int iRow = iSqrtSize* (iRegionNbr / iSqrtSize); iRow < iSqrtSize* (iRegionNbr / iSqrtSize) + iSqrtSize; iRow++) {
@@ -35,23 +35,9 @@ public class Sudoku extends LatinSquare {
 		return region;
 	}
 	
-	protected int[] getRegion(int col, int row) throws Exception {
+	public int[] getRegion(int col, int row) throws Exception {
 		int region = this.iSqrtSize*(row/this.iSqrtSize)+(col/this.iSqrtSize);
 		return getRegion(region);
-	}
-	
-	protected boolean isSoduku() {
-		// must be a latin square, and each region must also be a latin square
-		return false;
-	}
-	
-	protected boolean isPartialSoduku() {
-		// must be a latin square and contain at least one zero (i.e., only partially completed)
-		return false;
-	}
-	
-	protected boolean isValueValid (int iValue, int col, int row) {
-		return false;
 	}
 	
 	@Override
@@ -67,23 +53,18 @@ public class Sudoku extends LatinSquare {
 		}
 		return dup;
 	}
+
 	public boolean isPartialSudoku() {
-		if(!this.isLatinSquare()) {
-			return false;
-		}
 		if(this.hasDuplicates()) {
 			return false;
 		}
-		/*
-		 * for(int i = 0; i< this.getLatinSquare().length; i++) {
-		 * if(!this.hasAllValues(this.getRegion(i),this.getRow(0))) { return false; } }
-		 */
 		boolean containsZero = false;
 		for(int[] i:this.getLatinSquare()) {
 			containsZero = ArrayUtils.contains(i, 0) || containsZero;
 		}
 		return containsZero;
 	}
+
 	public boolean isSudoku() {
 		if(!this.isLatinSquare()) {
 			return false;
@@ -98,6 +79,7 @@ public class Sudoku extends LatinSquare {
 		}
 		return true;
 	}
+
 	public boolean isValidValue(int iRow,int iCol,int iVal) {
 		int prevVal = this.getLatinSquare()[iRow][iCol];
 		this.getLatinSquare()[iRow][iCol] = iVal;
