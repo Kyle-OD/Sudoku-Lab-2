@@ -121,4 +121,28 @@ public class LatinSquareTest {
 		
 		assertFalse(LS.isLatinSquare());
 	}
+	
+	@Test
+	public void ContainsZero_Test1() {
+		int[][] MySquare = { { 1, 2, 3 }, { 3, 1, 2 }, { 2, 3, 1 } };
+
+		LatinSquare LS = new LatinSquare(MySquare);
+		
+		assertFalse(!LS.ContainsZero());
+	}
+	
+	@Test
+	public void ContainsZero_Test2() {
+		int[][] MySquare = { { 1, 0, 3 }, { 3, 1, 2 }, { 2, 3, 1 } };
+
+		LatinSquare LS = new LatinSquare(MySquare);
+		
+		assertTrue(!LS.ContainsZero());
+	}
+	
+	@Test
+	public void RemoveZeros_Test1() {
+		int[] arr = {0,6,8,2,0,0,5,0};
+		// use java reflections
+	}
 }
